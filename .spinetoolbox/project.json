@@ -1,0 +1,1962 @@
+{
+    "project": {
+        "version": 13,
+        "description": "",
+        "settings": {
+            "enable_execute_all": true,
+            "store_external_paths_as_relative": false
+        },
+        "specifications": {
+            "Tool": [
+                {
+                    "type": "path",
+                    "relative": true,
+                    "path": ".spinetoolbox/specifications/Tool/vre_importer.json"
+                },
+                {
+                    "type": "path",
+                    "relative": true,
+                    "path": ".spinetoolbox/specifications/Tool/biomass_importer.json"
+                },
+                {
+                    "type": "path",
+                    "relative": true,
+                    "path": ".spinetoolbox/specifications/Tool/ines_builder.json"
+                },
+                {
+                    "type": "path",
+                    "relative": true,
+                    "path": ".spinetoolbox/specifications/Tool/hydro_importer.json"
+                },
+                {
+                    "type": "path",
+                    "relative": true,
+                    "path": ".spinetoolbox/specifications/Tool/transmission_importer.json"
+                },
+                {
+                    "type": "path",
+                    "relative": true,
+                    "path": ".spinetoolbox/specifications/Tool/power_importer.json"
+                },
+                {
+                    "type": "path",
+                    "relative": true,
+                    "path": ".spinetoolbox/specifications/Tool/rdemand_importer.json"
+                },
+                {
+                    "type": "path",
+                    "relative": true,
+                    "path": ".spinetoolbox/specifications/Tool/heat_importer.json"
+                },
+                {
+                    "type": "path",
+                    "relative": true,
+                    "path": ".spinetoolbox/specifications/Tool/industry_importer.json"
+                },
+                {
+                    "type": "path",
+                    "relative": true,
+                    "path": ".spinetoolbox/specifications/Tool/transport_importer.json"
+                },
+                {
+                    "type": "path",
+                    "relative": true,
+                    "path": ".spinetoolbox/specifications/Tool/gas_import.json"
+                },
+                {
+                    "type": "path",
+                    "relative": true,
+                    "path": ".spinetoolbox/specifications/Tool/cargo_importer.json"
+                },
+                {
+                    "type": "path",
+                    "relative": true,
+                    "path": ".spinetoolbox/specifications/Tool/commodity_importer.json"
+                }
+            ]
+        },
+        "connections": [
+            {
+                "name": "from VRE_importer to VRE_DB",
+                "from": [
+                    "VRE_importer",
+                    "right"
+                ],
+                "to": [
+                    "VRE_DB",
+                    "left"
+                ],
+                "filter_settings": {
+                    "auto_online": true,
+                    "enabled_filter_types": {
+                        "alternative_filter": false,
+                        "scenario_filter": true
+                    }
+                }
+            },
+            {
+                "name": "from VRE_input to VRE_importer",
+                "from": [
+                    "VRE_input",
+                    "right"
+                ],
+                "to": [
+                    "VRE_importer",
+                    "left"
+                ],
+                "filter_settings": {
+                    "auto_online": true,
+                    "enabled_filter_types": {
+                        "alternative_filter": false,
+                        "scenario_filter": true
+                    }
+                }
+            },
+            {
+                "name": "from biomass_input to biomass_importer",
+                "from": [
+                    "biomass_input",
+                    "right"
+                ],
+                "to": [
+                    "biomass_importer",
+                    "left"
+                ],
+                "filter_settings": {
+                    "auto_online": true,
+                    "enabled_filter_types": {
+                        "alternative_filter": false,
+                        "scenario_filter": true
+                    }
+                }
+            },
+            {
+                "name": "from biomass_importer to Biomass_DB",
+                "from": [
+                    "biomass_importer",
+                    "right"
+                ],
+                "to": [
+                    "Biomass_DB",
+                    "left"
+                ],
+                "filter_settings": {
+                    "auto_online": true,
+                    "enabled_filter_types": {
+                        "alternative_filter": false,
+                        "scenario_filter": true
+                    }
+                }
+            },
+            {
+                "name": "from Commodity_DB to ines_builder",
+                "from": [
+                    "Commodity_DB",
+                    "right"
+                ],
+                "to": [
+                    "ines_builder",
+                    "left"
+                ],
+                "filter_settings": {
+                    "auto_online": true,
+                    "enabled_filter_types": {
+                        "alternative_filter": true,
+                        "scenario_filter": false
+                    }
+                }
+            },
+            {
+                "name": "from Biomass_DB to ines_builder",
+                "from": [
+                    "Biomass_DB",
+                    "right"
+                ],
+                "to": [
+                    "ines_builder",
+                    "left"
+                ],
+                "filter_settings": {
+                    "auto_online": true,
+                    "enabled_filter_types": {
+                        "alternative_filter": true,
+                        "scenario_filter": false
+                    }
+                }
+            },
+            {
+                "name": "from VRE_DB to ines_builder",
+                "from": [
+                    "VRE_DB",
+                    "right"
+                ],
+                "to": [
+                    "ines_builder",
+                    "left"
+                ],
+                "filter_settings": {
+                    "auto_online": true,
+                    "enabled_filter_types": {
+                        "alternative_filter": true,
+                        "scenario_filter": false
+                    }
+                }
+            },
+            {
+                "name": "from ines_builder to INES_DB",
+                "from": [
+                    "ines_builder",
+                    "right"
+                ],
+                "to": [
+                    "INES_DB",
+                    "left"
+                ],
+                "options": {
+                    "purge_before_writing": true,
+                    "purge_settings": {
+                        "alternative": true,
+                        "scenario": true,
+                        "scenario_alternative": true,
+                        "entity_class": true,
+                        "display_mode": true,
+                        "entity_class_display_mode": true,
+                        "superclass_subclass": true,
+                        "entity": true,
+                        "entity_group": true,
+                        "entity_alternative": true,
+                        "parameter_value_list": true,
+                        "list_value": true,
+                        "parameter_definition": true,
+                        "parameter_type": true,
+                        "parameter_value": true,
+                        "metadata": true,
+                        "entity_metadata": true,
+                        "parameter_value_metadata": true
+                    }
+                },
+                "filter_settings": {
+                    "auto_online": true,
+                    "enabled_filter_types": {
+                        "alternative_filter": false,
+                        "scenario_filter": true
+                    }
+                }
+            },
+            {
+                "name": "from INES_inputs to ines_builder",
+                "from": [
+                    "INES_inputs",
+                    "right"
+                ],
+                "to": [
+                    "ines_builder",
+                    "bottom"
+                ],
+                "filter_settings": {
+                    "auto_online": true,
+                    "enabled_filter_types": {
+                        "alternative_filter": false,
+                        "scenario_filter": true
+                    }
+                }
+            },
+            {
+                "name": "from hydro_importer to Hydro_DB",
+                "from": [
+                    "hydro_importer",
+                    "right"
+                ],
+                "to": [
+                    "Hydro_DB",
+                    "left"
+                ],
+                "filter_settings": {
+                    "auto_online": true,
+                    "enabled_filter_types": {
+                        "alternative_filter": false,
+                        "scenario_filter": true
+                    }
+                }
+            },
+            {
+                "name": "from hydro_input to hydro_importer",
+                "from": [
+                    "hydro_input",
+                    "right"
+                ],
+                "to": [
+                    "hydro_importer",
+                    "left"
+                ],
+                "filter_settings": {
+                    "auto_online": true,
+                    "enabled_filter_types": {
+                        "alternative_filter": false,
+                        "scenario_filter": true
+                    }
+                }
+            },
+            {
+                "name": "from Hydro_DB to ines_builder",
+                "from": [
+                    "Hydro_DB",
+                    "right"
+                ],
+                "to": [
+                    "ines_builder",
+                    "left"
+                ],
+                "filter_settings": {
+                    "auto_online": true,
+                    "enabled_filter_types": {
+                        "alternative_filter": true,
+                        "scenario_filter": false
+                    }
+                }
+            },
+            {
+                "name": "from transmission_importer to Transmission_DB",
+                "from": [
+                    "transmission_importer",
+                    "right"
+                ],
+                "to": [
+                    "Transmission_DB",
+                    "left"
+                ],
+                "filter_settings": {
+                    "auto_online": true,
+                    "enabled_filter_types": {
+                        "alternative_filter": false,
+                        "scenario_filter": true
+                    }
+                }
+            },
+            {
+                "name": "from transmission_input to transmission_importer",
+                "from": [
+                    "transmission_input",
+                    "right"
+                ],
+                "to": [
+                    "transmission_importer",
+                    "left"
+                ],
+                "filter_settings": {
+                    "auto_online": true,
+                    "enabled_filter_types": {
+                        "alternative_filter": false,
+                        "scenario_filter": true
+                    }
+                }
+            },
+            {
+                "name": "from power_input to power_importer",
+                "from": [
+                    "power_input",
+                    "right"
+                ],
+                "to": [
+                    "power_importer",
+                    "left"
+                ],
+                "filter_settings": {
+                    "auto_online": true,
+                    "enabled_filter_types": {
+                        "alternative_filter": false,
+                        "scenario_filter": true
+                    }
+                }
+            },
+            {
+                "name": "from power_importer to Power_DB",
+                "from": [
+                    "power_importer",
+                    "right"
+                ],
+                "to": [
+                    "Power_DB",
+                    "left"
+                ],
+                "filter_settings": {
+                    "auto_online": true,
+                    "enabled_filter_types": {
+                        "alternative_filter": false,
+                        "scenario_filter": true
+                    }
+                }
+            },
+            {
+                "name": "from Power_DB to ines_builder",
+                "from": [
+                    "Power_DB",
+                    "right"
+                ],
+                "to": [
+                    "ines_builder",
+                    "left"
+                ],
+                "filter_settings": {
+                    "auto_online": true,
+                    "enabled_filter_types": {
+                        "alternative_filter": true,
+                        "scenario_filter": false
+                    }
+                }
+            },
+            {
+                "name": "from Transmission_DB to ines_builder",
+                "from": [
+                    "Transmission_DB",
+                    "right"
+                ],
+                "to": [
+                    "ines_builder",
+                    "left"
+                ],
+                "filter_settings": {
+                    "auto_online": true,
+                    "enabled_filter_types": {
+                        "alternative_filter": true,
+                        "scenario_filter": false
+                    }
+                }
+            },
+            {
+                "name": "from rdemand_input to rdemand_importer",
+                "from": [
+                    "rdemand_input",
+                    "right"
+                ],
+                "to": [
+                    "rdemand_importer",
+                    "left"
+                ],
+                "filter_settings": {
+                    "auto_online": true,
+                    "enabled_filter_types": {
+                        "alternative_filter": false,
+                        "scenario_filter": true
+                    }
+                }
+            },
+            {
+                "name": "from rdemand_importer to RDemand_DB",
+                "from": [
+                    "rdemand_importer",
+                    "right"
+                ],
+                "to": [
+                    "RDemand_DB",
+                    "left"
+                ],
+                "filter_settings": {
+                    "auto_online": true,
+                    "enabled_filter_types": {
+                        "alternative_filter": false,
+                        "scenario_filter": true
+                    }
+                }
+            },
+            {
+                "name": "from RDemand_DB to ines_builder",
+                "from": [
+                    "RDemand_DB",
+                    "right"
+                ],
+                "to": [
+                    "ines_builder",
+                    "left"
+                ],
+                "filter_settings": {
+                    "auto_online": true,
+                    "enabled_filter_types": {
+                        "alternative_filter": true,
+                        "scenario_filter": false
+                    }
+                }
+            },
+            {
+                "name": "from heat_input to heat_importer",
+                "from": [
+                    "heat_input",
+                    "right"
+                ],
+                "to": [
+                    "heat_importer",
+                    "left"
+                ],
+                "filter_settings": {
+                    "auto_online": true,
+                    "enabled_filter_types": {
+                        "alternative_filter": false,
+                        "scenario_filter": true
+                    }
+                }
+            },
+            {
+                "name": "from heat_importer to Heat_DB",
+                "from": [
+                    "heat_importer",
+                    "right"
+                ],
+                "to": [
+                    "Heat_DB",
+                    "left"
+                ],
+                "filter_settings": {
+                    "auto_online": true,
+                    "enabled_filter_types": {
+                        "alternative_filter": false,
+                        "scenario_filter": true
+                    }
+                }
+            },
+            {
+                "name": "from Heat_DB to ines_builder",
+                "from": [
+                    "Heat_DB",
+                    "right"
+                ],
+                "to": [
+                    "ines_builder",
+                    "left"
+                ],
+                "filter_settings": {
+                    "auto_online": true,
+                    "enabled_filter_types": {
+                        "alternative_filter": true,
+                        "scenario_filter": false
+                    }
+                }
+            },
+            {
+                "name": "from industry_input to industry_importer",
+                "from": [
+                    "industry_input",
+                    "right"
+                ],
+                "to": [
+                    "industry_importer",
+                    "left"
+                ],
+                "filter_settings": {
+                    "auto_online": true,
+                    "enabled_filter_types": {
+                        "alternative_filter": false,
+                        "scenario_filter": true
+                    }
+                }
+            },
+            {
+                "name": "from industry_importer to Industry_DB",
+                "from": [
+                    "industry_importer",
+                    "right"
+                ],
+                "to": [
+                    "Industry_DB",
+                    "left"
+                ],
+                "filter_settings": {
+                    "auto_online": true,
+                    "enabled_filter_types": {
+                        "alternative_filter": false,
+                        "scenario_filter": true
+                    }
+                }
+            },
+            {
+                "name": "from Industry_DB to ines_builder",
+                "from": [
+                    "Industry_DB",
+                    "right"
+                ],
+                "to": [
+                    "ines_builder",
+                    "left"
+                ],
+                "filter_settings": {
+                    "auto_online": true,
+                    "enabled_filter_types": {
+                        "alternative_filter": true,
+                        "scenario_filter": false
+                    }
+                }
+            },
+            {
+                "name": "from transport_importer to Transport_DB",
+                "from": [
+                    "transport_importer",
+                    "right"
+                ],
+                "to": [
+                    "Transport_DB",
+                    "left"
+                ],
+                "filter_settings": {
+                    "auto_online": true,
+                    "enabled_filter_types": {
+                        "alternative_filter": false,
+                        "scenario_filter": true
+                    }
+                }
+            },
+            {
+                "name": "from Transport_DB to ines_builder",
+                "from": [
+                    "Transport_DB",
+                    "right"
+                ],
+                "to": [
+                    "ines_builder",
+                    "left"
+                ],
+                "filter_settings": {
+                    "auto_online": true,
+                    "enabled_filter_types": {
+                        "alternative_filter": true,
+                        "scenario_filter": false
+                    }
+                }
+            },
+            {
+                "name": "from gas_input to gas_import",
+                "from": [
+                    "gas_input",
+                    "right"
+                ],
+                "to": [
+                    "gas_import",
+                    "left"
+                ],
+                "filter_settings": {
+                    "auto_online": true,
+                    "enabled_filter_types": {
+                        "alternative_filter": false,
+                        "scenario_filter": true
+                    }
+                }
+            },
+            {
+                "name": "from gas_import to Gas_DB",
+                "from": [
+                    "gas_import",
+                    "right"
+                ],
+                "to": [
+                    "Gas_DB",
+                    "left"
+                ],
+                "filter_settings": {
+                    "auto_online": true,
+                    "enabled_filter_types": {
+                        "alternative_filter": false,
+                        "scenario_filter": true
+                    }
+                }
+            },
+            {
+                "name": "from Gas_DB to ines_builder",
+                "from": [
+                    "Gas_DB",
+                    "right"
+                ],
+                "to": [
+                    "ines_builder",
+                    "left"
+                ],
+                "filter_settings": {
+                    "auto_online": true,
+                    "enabled_filter_types": {
+                        "alternative_filter": true,
+                        "scenario_filter": false
+                    }
+                }
+            },
+            {
+                "name": "from cargo_input to cargo_import",
+                "from": [
+                    "cargo_input",
+                    "right"
+                ],
+                "to": [
+                    "cargo_import",
+                    "left"
+                ],
+                "filter_settings": {
+                    "auto_online": true,
+                    "enabled_filter_types": {
+                        "alternative_filter": false,
+                        "scenario_filter": true
+                    }
+                }
+            },
+            {
+                "name": "from cargo_import to Cargo_DB",
+                "from": [
+                    "cargo_import",
+                    "right"
+                ],
+                "to": [
+                    "Cargo_DB",
+                    "left"
+                ],
+                "filter_settings": {
+                    "auto_online": true,
+                    "enabled_filter_types": {
+                        "alternative_filter": false,
+                        "scenario_filter": true
+                    }
+                }
+            },
+            {
+                "name": "from Cargo_DB to ines_builder",
+                "from": [
+                    "Cargo_DB",
+                    "right"
+                ],
+                "to": [
+                    "ines_builder",
+                    "left"
+                ],
+                "filter_settings": {
+                    "auto_online": true,
+                    "enabled_filter_types": {
+                        "alternative_filter": true,
+                        "scenario_filter": false
+                    }
+                }
+            },
+            {
+                "name": "from transport_input to transport_importer",
+                "from": [
+                    "transport_input",
+                    "right"
+                ],
+                "to": [
+                    "transport_importer",
+                    "left"
+                ],
+                "filter_settings": {
+                    "auto_online": true,
+                    "enabled_filter_types": {
+                        "alternative_filter": false,
+                        "scenario_filter": true
+                    }
+                }
+            },
+            {
+                "name": "from commodity_input to commodity_importer",
+                "from": [
+                    "commodity_input",
+                    "right"
+                ],
+                "to": [
+                    "commodity_importer",
+                    "left"
+                ],
+                "filter_settings": {
+                    "auto_online": true,
+                    "enabled_filter_types": {
+                        "alternative_filter": false,
+                        "scenario_filter": true
+                    }
+                }
+            },
+            {
+                "name": "from commodity_importer to Commodity_DB",
+                "from": [
+                    "commodity_importer",
+                    "right"
+                ],
+                "to": [
+                    "Commodity_DB",
+                    "left"
+                ],
+                "filter_settings": {
+                    "auto_online": true,
+                    "enabled_filter_types": {
+                        "alternative_filter": false,
+                        "scenario_filter": true
+                    }
+                }
+            },
+            {
+                "name": "from industry_importer to Other_Industry_DB",
+                "from": [
+                    "industry_importer",
+                    "right"
+                ],
+                "to": [
+                    "Other_Industry_DB",
+                    "left"
+                ],
+                "filter_settings": {
+                    "auto_online": true,
+                    "enabled_filter_types": {
+                        "alternative_filter": false,
+                        "scenario_filter": true
+                    }
+                }
+            },
+            {
+                "name": "from Other_Industry_DB to ines_builder",
+                "from": [
+                    "Other_Industry_DB",
+                    "right"
+                ],
+                "to": [
+                    "ines_builder",
+                    "bottom"
+                ],
+                "filter_settings": {
+                    "auto_online": true,
+                    "enabled_filter_types": {
+                        "alternative_filter": true,
+                        "scenario_filter": false
+                    }
+                }
+            }
+        ],
+        "jumps": []
+    },
+    "items": {
+        "VRE_input": {
+            "type": "Data Connection",
+            "description": "",
+            "x": -433.2764227642277,
+            "y": 80.90257869501164,
+            "file_references": [
+                {
+                    "type": "path",
+                    "relative": true,
+                    "path": "data/VRE/VRE_costs_EUR2025/VRE_costs.csv"
+                },
+                {
+                    "type": "path",
+                    "relative": true,
+                    "path": "data-pipelines/europe/userconfig.yaml"
+                },
+                {
+                    "type": "path",
+                    "relative": true,
+                    "path": "data/version_track.yml"
+                }
+            ],
+            "file_patterns": [],
+            "directory_references": [
+                {
+                    "type": "path",
+                    "relative": true,
+                    "path": "data/VRE/VRE_greenfield_installation_potentials"
+                },
+                {
+                    "type": "path",
+                    "relative": true,
+                    "path": "data/VRE/VRE_installed_capacities_2020_and_2025"
+                },
+                {
+                    "type": "path",
+                    "relative": true,
+                    "path": "data/VRE/VRE_time_series"
+                }
+            ],
+            "db_references": []
+        },
+        "VRE_DB": {
+            "type": "Data Store",
+            "description": "",
+            "x": -150.44320234869016,
+            "y": 79.82165634045658,
+            "url": {
+                "dialect": "sqlite",
+                "host": "",
+                "port": null,
+                "database": {
+                    "type": "path",
+                    "relative": true,
+                    "path": ".spinetoolbox/items/vre_db/vre_db.sqlite"
+                },
+                "schema": ""
+            }
+        },
+        "VRE_importer": {
+            "type": "Tool",
+            "description": "",
+            "x": -290.8568578741344,
+            "y": 87.84608729801104,
+            "specification": "VRE_importer",
+            "execute_in_work": false,
+            "cmd_line_args": [
+                {
+                    "type": "resource",
+                    "arg": "db_url@VRE_DB"
+                },
+                {
+                    "type": "resource",
+                    "arg": "<project>/data/VRE/VRE_costs_EUR2025/VRE_costs.csv"
+                },
+                {
+                    "type": "resource",
+                    "arg": "<project>/data/VRE/VRE_time_series"
+                },
+                {
+                    "type": "resource",
+                    "arg": "<project>/data/VRE/VRE_installed_capacities_2020_and_2025"
+                },
+                {
+                    "type": "resource",
+                    "arg": "<project>/data/VRE/VRE_greenfield_installation_potentials"
+                },
+                {
+                    "type": "resource",
+                    "arg": "<project>/data-pipelines/europe/userconfig.yaml"
+                },
+                {
+                    "type": "resource",
+                    "arg": "<project>/data/version_track.yml"
+                }
+            ],
+            "kill_completed_processes": false,
+            "log_process_output": false
+        },
+        "biomass_input": {
+            "type": "Data Connection",
+            "description": "",
+            "x": -431.9593252610416,
+            "y": -38.02802186271022,
+            "file_references": [
+                {
+                    "type": "path",
+                    "relative": true,
+                    "path": "data/Biomass/db_biomass_ener_mopo.csv"
+                },
+                {
+                    "type": "path",
+                    "relative": true,
+                    "path": "data/version_track.yml"
+                }
+            ],
+            "file_patterns": [],
+            "directory_references": [],
+            "db_references": []
+        },
+        "biomass_importer": {
+            "type": "Tool",
+            "description": "",
+            "x": -283.7475477448378,
+            "y": -33.152634444414026,
+            "specification": "biomass_importer",
+            "execute_in_work": false,
+            "cmd_line_args": [
+                {
+                    "type": "resource",
+                    "arg": "db_url@Biomass_DB"
+                },
+                {
+                    "type": "resource",
+                    "arg": "<project>/data/Biomass/db_biomass_ener_mopo.csv"
+                },
+                {
+                    "type": "resource",
+                    "arg": "<project>/data/version_track.yml"
+                }
+            ],
+            "kill_completed_processes": false,
+            "log_process_output": false
+        },
+        "Biomass_DB": {
+            "type": "Data Store",
+            "description": "",
+            "x": -151.1517432294785,
+            "y": -49.71098444253764,
+            "url": {
+                "dialect": "sqlite",
+                "host": "",
+                "port": null,
+                "database": {
+                    "type": "path",
+                    "relative": true,
+                    "path": ".spinetoolbox/items/biomass_db/biomass_db.sqlite"
+                },
+                "schema": ""
+            }
+        },
+        "Commodity_DB": {
+            "type": "Data Store",
+            "description": "",
+            "x": -156.5835381947748,
+            "y": -323.69064005037166,
+            "url": {
+                "dialect": "sqlite",
+                "host": "",
+                "port": null,
+                "database": {
+                    "type": "path",
+                    "relative": true,
+                    "path": ".spinetoolbox/items/commodity_db/commodity_db.sqlite"
+                },
+                "schema": ""
+            }
+        },
+        "ines_builder": {
+            "type": "Tool",
+            "description": "",
+            "x": 118.68984099848997,
+            "y": -25.048105431092388,
+            "specification": "ines_builder",
+            "execute_in_work": false,
+            "cmd_line_args": [
+                {
+                    "type": "resource",
+                    "arg": "db_url@INES_DB"
+                },
+                {
+                    "type": "resource",
+                    "arg": "db_url@Commodity_DB"
+                },
+                {
+                    "type": "resource",
+                    "arg": "db_url@Power_DB"
+                },
+                {
+                    "type": "resource",
+                    "arg": "db_url@VRE_DB"
+                },
+                {
+                    "type": "resource",
+                    "arg": "db_url@Transmission_DB"
+                },
+                {
+                    "type": "resource",
+                    "arg": "db_url@Hydro_DB"
+                },
+                {
+                    "type": "resource",
+                    "arg": "db_url@RDemand_DB"
+                },
+                {
+                    "type": "resource",
+                    "arg": "db_url@Industry_DB"
+                },
+                {
+                    "type": "resource",
+                    "arg": "db_url@Other_Industry_DB"
+                },
+                {
+                    "type": "resource",
+                    "arg": "db_url@Biomass_DB"
+                },
+                {
+                    "type": "resource",
+                    "arg": "db_url@Gas_DB"
+                },
+                {
+                    "type": "resource",
+                    "arg": "db_url@Transport_DB"
+                },
+                {
+                    "type": "resource",
+                    "arg": "db_url@Heat_DB"
+                },
+                {
+                    "type": "resource",
+                    "arg": "db_url@Cargo_DB"
+                },
+                {
+                    "type": "resource",
+                    "arg": "<project>/data-pipelines/europe/userconfig.yaml"
+                }
+            ],
+            "kill_completed_processes": false,
+            "log_process_output": false
+        },
+        "INES_DB": {
+            "type": "Data Store",
+            "description": "",
+            "x": 259.2823516991665,
+            "y": -36.57314334763914,
+            "url": {
+                "dialect": "sqlite",
+                "host": "",
+                "port": null,
+                "database": {
+                    "type": "path",
+                    "relative": true,
+                    "path": ".spinetoolbox/items/ines_db/ines_db.sqlite"
+                },
+                "schema": ""
+            }
+        },
+        "INES_inputs": {
+            "type": "Data Connection",
+            "description": "",
+            "x": 46.822466573569294,
+            "y": 303.83002181940026,
+            "file_references": [
+                {
+                    "type": "path",
+                    "relative": true,
+                    "path": "data-pipelines/europe/userconfig.yaml"
+                }
+            ],
+            "file_patterns": [],
+            "directory_references": [],
+            "db_references": []
+        },
+        "hydro_input": {
+            "type": "Data Connection",
+            "description": "",
+            "x": -445.9185577764966,
+            "y": -173.28006570422087,
+            "file_references": [
+                {
+                    "type": "path",
+                    "relative": true,
+                    "path": "data-pipelines/europe/userconfig.yaml"
+                },
+                {
+                    "type": "path",
+                    "relative": true,
+                    "path": "data/Hydro/EU_parameters_data_20260215_version1.xlsx"
+                },
+                {
+                    "type": "path",
+                    "relative": true,
+                    "path": "data/version_track.yml"
+                }
+            ],
+            "file_patterns": [],
+            "directory_references": [
+                {
+                    "type": "path",
+                    "relative": true,
+                    "path": "data/Hydro/Reservoir Inflow 1980-2023"
+                },
+                {
+                    "type": "path",
+                    "relative": true,
+                    "path": "data/Hydro/Run-of-River Generation 1980-2023"
+                }
+            ],
+            "db_references": []
+        },
+        "hydro_importer": {
+            "type": "Tool",
+            "description": "",
+            "x": -291.3033840464745,
+            "y": -176.0996504017997,
+            "specification": "hydro_importer",
+            "execute_in_work": false,
+            "cmd_line_args": [
+                {
+                    "type": "resource",
+                    "arg": "db_url@Hydro_DB"
+                },
+                {
+                    "type": "resource",
+                    "arg": "<project>/data/Hydro/EU_parameters_data_20260215_version1.xlsx"
+                },
+                {
+                    "type": "resource",
+                    "arg": "<project>/data/Hydro/Reservoir Inflow 1980-2023"
+                },
+                {
+                    "type": "resource",
+                    "arg": "<project>/data/Hydro/Run-of-River Generation 1980-2023"
+                },
+                {
+                    "type": "resource",
+                    "arg": "<project>/data-pipelines/europe/userconfig.yaml"
+                },
+                {
+                    "type": "resource",
+                    "arg": "<project>/data/version_track.yml"
+                }
+            ],
+            "kill_completed_processes": false,
+            "log_process_output": false
+        },
+        "Hydro_DB": {
+            "type": "Data Store",
+            "description": "",
+            "x": -152.47780091982176,
+            "y": -176.5009847175907,
+            "url": {
+                "dialect": "sqlite",
+                "host": "",
+                "port": null,
+                "database": {
+                    "type": "path",
+                    "relative": true,
+                    "path": ".spinetoolbox/items/hydro_db/hydro_db.sqlite"
+                },
+                "schema": ""
+            }
+        },
+        "Transmission_DB": {
+            "type": "Data Store",
+            "description": "",
+            "x": -608.8319492840568,
+            "y": -91.52051565078591,
+            "url": {
+                "dialect": "sqlite",
+                "host": "",
+                "port": null,
+                "database": {
+                    "type": "path",
+                    "relative": true,
+                    "path": ".spinetoolbox/items/transmission_db/transmission_db.sqlite"
+                },
+                "schema": ""
+            }
+        },
+        "transmission_input": {
+            "type": "Data Connection",
+            "description": "",
+            "x": -900.8691915535046,
+            "y": -92.97762699432067,
+            "file_references": [
+                {
+                    "type": "path",
+                    "relative": true,
+                    "path": "data/Electricity_Transmission/Electricity_Transmission.csv"
+                },
+                {
+                    "type": "path",
+                    "relative": true,
+                    "path": "data/version_track.yml"
+                }
+            ],
+            "file_patterns": [],
+            "directory_references": [],
+            "db_references": []
+        },
+        "transmission_importer": {
+            "type": "Tool",
+            "description": "",
+            "x": -753.0105589406492,
+            "y": -93.20867166901958,
+            "specification": "transmission_importer",
+            "execute_in_work": false,
+            "cmd_line_args": [
+                {
+                    "type": "resource",
+                    "arg": "db_url@Transmission_DB"
+                },
+                {
+                    "type": "resource",
+                    "arg": "<project>/data/Electricity_Transmission/Electricity_Transmission.csv"
+                },
+                {
+                    "type": "resource",
+                    "arg": "<project>/data/version_track.yml"
+                }
+            ],
+            "kill_completed_processes": false,
+            "log_process_output": false
+        },
+        "power_input": {
+            "type": "Data Connection",
+            "description": "",
+            "x": -904.4494265503341,
+            "y": -232.64097559320885,
+            "file_references": [
+                {
+                    "type": "path",
+                    "relative": true,
+                    "path": "data/Energy_Conversion/costs_2020.csv"
+                },
+                {
+                    "type": "path",
+                    "relative": true,
+                    "path": "data/Energy_Conversion/costs_2030.csv"
+                },
+                {
+                    "type": "path",
+                    "relative": true,
+                    "path": "data/Energy_Conversion/costs_2040.csv"
+                },
+                {
+                    "type": "path",
+                    "relative": true,
+                    "path": "data/Energy_Conversion/costs_2050.csv"
+                },
+                {
+                    "type": "path",
+                    "relative": true,
+                    "path": "data/Energy_Conversion/powerplants.csv"
+                },
+                {
+                    "type": "path",
+                    "relative": true,
+                    "path": "data-pipelines/europe/_power/Power_Sector_template_DB.json"
+                },
+                {
+                    "type": "path",
+                    "relative": true,
+                    "path": "geodata/onshore_plus_ic.geojson"
+                },
+                {
+                    "type": "path",
+                    "relative": true,
+                    "path": "data-pipelines/europe/EU_historical_inflation_ECB.csv"
+                },
+                {
+                    "type": "path",
+                    "relative": true,
+                    "path": "data/Energy_Conversion/assumptions.xlsx"
+                },
+                {
+                    "type": "path",
+                    "relative": true,
+                    "path": "data/Energy_Conversion/config.json"
+                },
+                {
+                    "type": "path",
+                    "relative": true,
+                    "path": "data/version_track.yml"
+                }
+            ],
+            "file_patterns": [],
+            "directory_references": [],
+            "db_references": []
+        },
+        "power_importer": {
+            "type": "Tool",
+            "description": "",
+            "x": -747.7222876632921,
+            "y": -227.25317621817112,
+            "specification": "power_importer",
+            "execute_in_work": false,
+            "cmd_line_args": [
+                {
+                    "type": "resource",
+                    "arg": "db_url@Power_DB"
+                },
+                {
+                    "type": "resource",
+                    "arg": "<project>/data/Energy_Conversion/costs_2030.csv"
+                },
+                {
+                    "type": "resource",
+                    "arg": "<project>/data/Energy_Conversion/costs_2040.csv"
+                },
+                {
+                    "type": "resource",
+                    "arg": "<project>/data/Energy_Conversion/costs_2050.csv"
+                },
+                {
+                    "type": "resource",
+                    "arg": "<project>/data/Energy_Conversion/powerplants.csv"
+                },
+                {
+                    "type": "resource",
+                    "arg": "<project>/data-pipelines/europe/_power/Power_Sector_template_DB.json"
+                },
+                {
+                    "type": "resource",
+                    "arg": "<project>/data/Energy_Conversion/costs_2020.csv"
+                },
+                {
+                    "type": "resource",
+                    "arg": "<project>/data-pipelines/europe/EU_historical_inflation_ECB.csv"
+                },
+                {
+                    "type": "resource",
+                    "arg": "<project>/geodata/onshore_plus_ic.geojson"
+                },
+                {
+                    "type": "resource",
+                    "arg": "<project>/data/Energy_Conversion/assumptions.xlsx"
+                },
+                {
+                    "type": "resource",
+                    "arg": "<project>/data/Energy_Conversion/config.json"
+                },
+                {
+                    "type": "resource",
+                    "arg": "<project>/data/version_track.yml"
+                }
+            ],
+            "kill_completed_processes": false,
+            "log_process_output": false
+        },
+        "Power_DB": {
+            "type": "Data Store",
+            "description": "",
+            "x": -615.3943159241668,
+            "y": -243.76313711586792,
+            "url": {
+                "dialect": "sqlite",
+                "host": "",
+                "port": null,
+                "database": {
+                    "type": "path",
+                    "relative": true,
+                    "path": ".spinetoolbox/items/power_db/power_db.sqlite"
+                },
+                "schema": ""
+            }
+        },
+        "RDemand_DB": {
+            "type": "Data Store",
+            "description": "",
+            "x": -623.5412203285156,
+            "y": -358.30748556078106,
+            "url": {
+                "dialect": "sqlite",
+                "host": "",
+                "port": null,
+                "database": {
+                    "type": "path",
+                    "relative": true,
+                    "path": ".spinetoolbox/items/rdemand_db/rdemand_db.sqlite"
+                },
+                "schema": ""
+            }
+        },
+        "rdemand_importer": {
+            "type": "Tool",
+            "description": "",
+            "x": -754.3143224985985,
+            "y": -356.3423849723072,
+            "specification": "rdemand_importer",
+            "execute_in_work": false,
+            "cmd_line_args": [
+                {
+                    "type": "resource",
+                    "arg": "db_url@RDemand_DB"
+                },
+                {
+                    "type": "resource",
+                    "arg": "<project>/data/Rdemand/other_electricity_demand.csv"
+                },
+                {
+                    "type": "resource",
+                    "arg": "<project>/data-pipelines/europe/userconfig.yaml"
+                },
+                {
+                    "type": "resource",
+                    "arg": "<project>/data/version_track.yml"
+                }
+            ],
+            "kill_completed_processes": false,
+            "log_process_output": false
+        },
+        "rdemand_input": {
+            "type": "Data Connection",
+            "description": "",
+            "x": -901.7526522541001,
+            "y": -360.74806711448446,
+            "file_references": [
+                {
+                    "type": "path",
+                    "relative": true,
+                    "path": "data/Rdemand/other_electricity_demand.csv"
+                },
+                {
+                    "type": "path",
+                    "relative": true,
+                    "path": "data-pipelines/europe/userconfig.yaml"
+                },
+                {
+                    "type": "path",
+                    "relative": true,
+                    "path": "data/version_track.yml"
+                }
+            ],
+            "file_patterns": [],
+            "directory_references": [],
+            "db_references": []
+        },
+        "heat_input": {
+            "type": "Data Connection",
+            "description": "",
+            "x": -440.51129215615845,
+            "y": 202.3937626955446,
+            "file_references": [
+                {
+                    "type": "path",
+                    "relative": true,
+                    "path": "data/Buildings/heat_storage_params.csv"
+                },
+                {
+                    "type": "path",
+                    "relative": true,
+                    "path": "data/Buildings/heat_technology_params.csv"
+                },
+                {
+                    "type": "path",
+                    "relative": true,
+                    "path": "data/Buildings/scenario_total_yearly_demands_GWh.csv"
+                },
+                {
+                    "type": "path",
+                    "relative": true,
+                    "path": "data/Buildings/simplified_capacities_with_decommissioning_MW.csv"
+                },
+                {
+                    "type": "path",
+                    "relative": true,
+                    "path": "data-pipelines/europe/userconfig.yaml"
+                },
+                {
+                    "type": "path",
+                    "relative": true,
+                    "path": "data/version_track.yml"
+                }
+            ],
+            "file_patterns": [],
+            "directory_references": [
+                {
+                    "type": "path",
+                    "relative": true,
+                    "path": "data/Buildings/demand-timeseries"
+                },
+                {
+                    "type": "path",
+                    "relative": true,
+                    "path": "data/Buildings/cop-timeseries"
+                }
+            ],
+            "db_references": []
+        },
+        "Heat_DB": {
+            "type": "Data Store",
+            "description": "",
+            "x": -131.79990127421308,
+            "y": 204.4064342403944,
+            "url": {
+                "dialect": "sqlite",
+                "host": "",
+                "port": null,
+                "database": {
+                    "type": "path",
+                    "relative": true,
+                    "path": ".spinetoolbox/items/heat_db/heat_db.sqlite"
+                },
+                "schema": ""
+            }
+        },
+        "heat_importer": {
+            "type": "Tool",
+            "description": "",
+            "x": -276.0543896918303,
+            "y": 202.6830933914852,
+            "specification": "heat_importer",
+            "execute_in_work": false,
+            "cmd_line_args": [
+                {
+                    "type": "resource",
+                    "arg": "db_url@Heat_DB"
+                },
+                {
+                    "type": "resource",
+                    "arg": "<project>/data/Buildings/heat_technology_params.csv"
+                },
+                {
+                    "type": "resource",
+                    "arg": "<project>/data/Buildings/heat_storage_params.csv"
+                },
+                {
+                    "type": "resource",
+                    "arg": "<project>/data/Buildings/simplified_capacities_with_decommissioning_MW.csv"
+                },
+                {
+                    "type": "resource",
+                    "arg": "<project>/data/Buildings/scenario_total_yearly_demands_GWh.csv"
+                },
+                {
+                    "type": "resource",
+                    "arg": "<project>/data/Buildings/cop-timeseries"
+                },
+                {
+                    "type": "resource",
+                    "arg": "<project>/data/Buildings/demand-timeseries"
+                },
+                {
+                    "type": "resource",
+                    "arg": "<project>/data-pipelines/europe/userconfig.yaml"
+                },
+                {
+                    "type": "resource",
+                    "arg": "<project>/data/version_track.yml"
+                }
+            ],
+            "kill_completed_processes": false,
+            "log_process_output": false
+        },
+        "Industry_DB": {
+            "type": "Data Store",
+            "description": "",
+            "x": -131.58206838882788,
+            "y": 337.51987047278647,
+            "url": {
+                "dialect": "sqlite",
+                "host": "",
+                "port": null,
+                "database": {
+                    "type": "path",
+                    "relative": true,
+                    "path": ".spinetoolbox/items/industry_db/industry_db.sqlite"
+                },
+                "schema": ""
+            }
+        },
+        "industry_importer": {
+            "type": "Tool",
+            "description": "",
+            "x": -267.4797033368458,
+            "y": 385.93824150894017,
+            "specification": "industry_importer",
+            "execute_in_work": false,
+            "cmd_line_args": [
+                {
+                    "type": "resource",
+                    "arg": "db_url@Industry_DB"
+                },
+                {
+                    "type": "resource",
+                    "arg": "db_url@Other_Industry_DB"
+                },
+                {
+                    "type": "resource",
+                    "arg": "<project>/data/Industry/technology_catalogue_ind_nuts0_nuts3.xlsx"
+                },
+                {
+                    "type": "resource",
+                    "arg": "<project>/data/version_track.yml"
+                }
+            ],
+            "kill_completed_processes": false,
+            "log_process_output": false
+        },
+        "industry_input": {
+            "type": "Data Connection",
+            "description": "",
+            "x": -433.54641626637107,
+            "y": 389.9374651293992,
+            "file_references": [
+                {
+                    "type": "path",
+                    "relative": true,
+                    "path": "data/Industry/technology_catalogue_ind_nuts0_nuts3.xlsx"
+                },
+                {
+                    "type": "path",
+                    "relative": true,
+                    "path": "data/version_track.yml"
+                }
+            ],
+            "file_patterns": [],
+            "directory_references": [],
+            "db_references": []
+        },
+        "Transport_DB": {
+            "type": "Data Store",
+            "description": "",
+            "x": -631.3483457784083,
+            "y": 78.06228167723897,
+            "url": {
+                "dialect": "sqlite",
+                "host": "",
+                "port": null,
+                "database": {
+                    "type": "path",
+                    "relative": true,
+                    "path": ".spinetoolbox/items/transport_db/transport_db.sqlite"
+                },
+                "schema": ""
+            }
+        },
+        "transport_importer": {
+            "type": "Tool",
+            "description": "",
+            "x": -767.6795586334524,
+            "y": 68.26502236347186,
+            "specification": "transport_importer",
+            "execute_in_work": false,
+            "cmd_line_args": [
+                {
+                    "type": "resource",
+                    "arg": "db_url@Transport_DB"
+                },
+                {
+                    "type": "resource",
+                    "arg": "<project>/data/Transport/road"
+                },
+                {
+                    "type": "resource",
+                    "arg": "<project>/data/Transport/non-road"
+                },
+                {
+                    "type": "resource",
+                    "arg": "<project>/data/Transport/fleets_per_scenario.csv"
+                },
+                {
+                    "type": "resource",
+                    "arg": "<project>/data-pipelines/europe/userconfig.yaml"
+                },
+                {
+                    "type": "resource",
+                    "arg": "<project>/data/version_track.yml"
+                }
+            ],
+            "kill_completed_processes": false,
+            "log_process_output": false
+        },
+        "Gas_DB": {
+            "type": "Data Store",
+            "description": "",
+            "x": -621.1733516323559,
+            "y": 194.37951059758365,
+            "url": {
+                "dialect": "sqlite",
+                "host": "",
+                "port": null,
+                "database": {
+                    "type": "path",
+                    "relative": true,
+                    "path": ".spinetoolbox/items/gas_db/gas_db.sqlite"
+                },
+                "schema": ""
+            }
+        },
+        "gas_input": {
+            "type": "Data Connection",
+            "description": "",
+            "x": -906.2625903060316,
+            "y": 192.1179111942028,
+            "file_references": [
+                {
+                    "type": "path",
+                    "relative": true,
+                    "path": "data-pipelines/europe/EU_historical_inflation_ECB.csv"
+                },
+                {
+                    "type": "path",
+                    "relative": true,
+                    "path": "data/Gas/Gas_Sectors_Dataset.xlsx"
+                },
+                {
+                    "type": "path",
+                    "relative": true,
+                    "path": "data/version_track.yml"
+                }
+            ],
+            "file_patterns": [],
+            "directory_references": [],
+            "db_references": []
+        },
+        "gas_import": {
+            "type": "Tool",
+            "description": "",
+            "x": -774.2155844053252,
+            "y": 189.22720258387278,
+            "specification": "gas_import",
+            "execute_in_work": false,
+            "cmd_line_args": [
+                {
+                    "type": "resource",
+                    "arg": "db_url@Gas_DB"
+                },
+                {
+                    "type": "resource",
+                    "arg": "<project>/data/Gas/Gas_Sectors_Dataset.xlsx"
+                },
+                {
+                    "type": "resource",
+                    "arg": "<project>/data-pipelines/europe/EU_historical_inflation_ECB.csv"
+                },
+                {
+                    "type": "resource",
+                    "arg": "<project>/data/version_track.yml"
+                }
+            ],
+            "kill_completed_processes": false,
+            "log_process_output": false
+        },
+        "cargo_input": {
+            "type": "Data Connection",
+            "description": "",
+            "x": -903.8476507564899,
+            "y": 308.4902437084758,
+            "file_references": [
+                {
+                    "type": "path",
+                    "relative": true,
+                    "path": "data/Cargo/cargo_config.yml"
+                },
+                {
+                    "type": "path",
+                    "relative": true,
+                    "path": "data/Cargo/cargo_network.csv"
+                },
+                {
+                    "type": "path",
+                    "relative": true,
+                    "path": "data/version_track.yml"
+                }
+            ],
+            "file_patterns": [],
+            "directory_references": [],
+            "db_references": []
+        },
+        "cargo_import": {
+            "type": "Tool",
+            "description": "",
+            "x": -775.283720620791,
+            "y": 304.2317007928924,
+            "specification": "cargo_importer",
+            "execute_in_work": false,
+            "cmd_line_args": [
+                {
+                    "type": "resource",
+                    "arg": "db_url@Cargo_DB"
+                },
+                {
+                    "type": "resource",
+                    "arg": "<project>/data/Cargo/cargo_network.csv"
+                },
+                {
+                    "type": "resource",
+                    "arg": "<project>/data/Cargo/cargo_config.yml"
+                },
+                {
+                    "type": "resource",
+                    "arg": "<project>/data/version_track.yml"
+                }
+            ],
+            "kill_completed_processes": false,
+            "log_process_output": false
+        },
+        "Cargo_DB": {
+            "type": "Data Store",
+            "description": "",
+            "x": -614.9315096457062,
+            "y": 300.934366750714,
+            "url": {
+                "dialect": "sqlite",
+                "host": "",
+                "port": null,
+                "database": {
+                    "type": "path",
+                    "relative": true,
+                    "path": ".spinetoolbox/items/cargo_db/cargo_db.sqlite"
+                },
+                "schema": ""
+            }
+        },
+        "transport_input": {
+            "type": "Data Connection",
+            "description": "",
+            "x": -899.5814161652165,
+            "y": 65.59447826204703,
+            "file_references": [
+                {
+                    "type": "path",
+                    "relative": true,
+                    "path": "data/Transport/fleets_per_scenario.csv"
+                },
+                {
+                    "type": "path",
+                    "relative": true,
+                    "path": "data-pipelines/europe/userconfig.yaml"
+                },
+                {
+                    "type": "path",
+                    "relative": true,
+                    "path": "data/version_track.yml"
+                }
+            ],
+            "file_patterns": [],
+            "directory_references": [
+                {
+                    "type": "path",
+                    "relative": true,
+                    "path": "data/Transport/road"
+                },
+                {
+                    "type": "path",
+                    "relative": true,
+                    "path": "data/Transport/non-road"
+                }
+            ],
+            "db_references": []
+        },
+        "commodity_input": {
+            "type": "Data Connection",
+            "description": "",
+            "x": -431.7766048785843,
+            "y": -319.75908946197035,
+            "file_references": [
+                {
+                    "type": "path",
+                    "relative": true,
+                    "path": "data-pipelines/europe/EU_historical_inflation_ECB.csv"
+                },
+                {
+                    "type": "path",
+                    "relative": true,
+                    "path": "data/Commodities/commodity_data.csv"
+                },
+                {
+                    "type": "path",
+                    "relative": true,
+                    "path": "data/version_track.yml"
+                }
+            ],
+            "file_patterns": [],
+            "directory_references": [],
+            "db_references": []
+        },
+        "commodity_importer": {
+            "type": "Tool",
+            "description": "",
+            "x": -287.1721758862282,
+            "y": -323.83245365893816,
+            "specification": "commodity_importer",
+            "execute_in_work": false,
+            "cmd_line_args": [
+                {
+                    "type": "resource",
+                    "arg": "db_url@Commodity_DB"
+                },
+                {
+                    "type": "resource",
+                    "arg": "<project>/data/Commodities/commodity_data.csv"
+                },
+                {
+                    "type": "resource",
+                    "arg": "<project>/data-pipelines/europe/EU_historical_inflation_ECB.csv"
+                },
+                {
+                    "type": "resource",
+                    "arg": "<project>/data/version_track.yml"
+                }
+            ],
+            "kill_completed_processes": false,
+            "log_process_output": false
+        },
+        "Other_Industry_DB": {
+            "type": "Data Store",
+            "description": "",
+            "x": -128.4943581053919,
+            "y": 430.03690205366297,
+            "url": {
+                "dialect": "sqlite",
+                "host": "",
+                "port": null,
+                "database": {
+                    "type": "path",
+                    "relative": true,
+                    "path": ".spinetoolbox/items/other_industry_db/Other_Industry_DB.sqlite"
+                },
+                "schema": ""
+            }
+        }
+    }
+}

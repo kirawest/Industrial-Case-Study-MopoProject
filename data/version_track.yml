@@ -1,0 +1,45 @@
+biomass:
+  version: feb_2026
+buildings:
+  version: feb_2026
+  sources:
+    - https://zenodo.org/records/18505234
+cargo:
+  version: feb_2026
+  sources:
+    - https://zenodo.org/records/18482337
+commodities:
+  version: feb_2026
+electricity_transmission:
+  version: feb_2026
+  sources:
+    - https://zenodo.org/records/14501623
+energy_conversion:
+  version: feb_2026
+  sources:
+    - https://github.com/PyPSA/technology-data/tree/master/outputs
+    - https://github.com/PyPSA/powerplantmatching/blob/master/powerplants.csv
+gas:
+  version: feb_2026
+  sources:
+    - https://zenodo.org/records/18590390
+hydro:
+  version: feb_2026
+  sources:
+    - https://zenodo.org/records/18632738
+industry:
+  version: feb_2026
+  sources:
+    - https://zenodo.org/records/18633158
+    - https://zenodo.org/records/18630252
+residual_demand:
+  version: feb_2026
+  sources:
+    - https://zenodo.org/records/18759195
+transport:
+  version: feb_2026
+vre:
+  version: feb_2026
+  sources:
+    - https://zenodo.org/records/17950648
+    - https://zenodo.org/records/18549865
