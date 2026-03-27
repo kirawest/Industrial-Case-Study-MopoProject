@@ -1,0 +1,27 @@
+{
+    "entity_classes": [
+        [
+            "commodity",
+            [],
+            null,
+            281107043971139,
+            true
+        ]
+    ],
+    "parameter_definitions": [
+        [
+            "commodity",
+            "co2_content",
+            null,
+            null,
+            null
+        ],
+        [
+            "commodity",
+            "commodity_price",
+            null,
+            null,
+            null
+        ]
+    ]
+}
