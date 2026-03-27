@@ -1,4 +1,3 @@
 .spinetoolbox/local
 .spinetoolbox/items/**/*.sqlite
 data/*/
-%LOCALAPPDATA%
