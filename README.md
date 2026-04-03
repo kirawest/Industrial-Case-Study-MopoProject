@@ -6,26 +6,41 @@ Once constructed, this repo should be an easy way to reproduce the Industrial Ca
 
 # First Time Set Up Instructions
 
-## Install Python??
 
-## Project Setup
+1. Install Python, Julia, and (optional) VSCode.
+1. **Clone** this repository
+1. Go to the file `data/version_track.yml` and follow the link for each data source. Then be sure to download the version that matches the date in the version_track file.
 
-1. Clone this repository
-1. Download the data zipped folder from Zenodo > Right click > Extract All > Choose the Raw-Data folder
+Folder structure in data/:
+- Biomass
+- Buildings
+- Cargo
+- Commodities
+- Electricity_Transmission
+- Energy_Conversion
+- Gas
+- geodata
+- Hydro
+- Industry
+- Rdemand
+- Transport
+- VRE
 
-1. EITHER open the project in VSCode and open a powershell terminal 
+    !!! note: This does not seem like the ideal way to download the data. All the data should be in one location in the correct file structure, but right now that is under the Pan-European case (along with the .spinetoolbox etc) on Zenodo.
 
-    OR open a regular powershell terminal and cd into the project folder: `cd [path to folder]`
+1. Choose one:
+    - Open the project in **VSCode** and open a powershell terminal 
+    - Open a regular **powershell or CMD terminal** and go to the project folder: `cd [path to folder]`
 
-<!-- 1. Create & activate a new python environment:
+1. Create & activate a new **python environment**:
     ```
     py -3.13 -m venv .venv
     .\venv\Scripts\Activate.ps1
-    ``` -->
+    ```
 
 1. Install python dependencies: 
 
-    `python -m pip install -r requirements.txt`
+    `python -m pip install -r python-requirements.txt`
 
 <!-- 1. Install julia dependencies:
 
@@ -35,6 +50,15 @@ Once constructed, this repo should be an easy way to reproduce the Industrial Ca
 
 1. Open the project: *File > Open Project > Industrial-Case-Study-MopoProject*
 
+1. To make sure SpineToolbox is using the right Python environment for the project, **choose one:**
+    - **If you're using SpineToolbox for ONLY this project** (and don't mind configuring globally for this project): 
+    
+        *File > Settings > Tools >* under *Python*, with Basic Console selected, click the folder button to browse and select the `python.exe` file in your .venv folder of this project. (Something like `C:/users/username/Industrial-Case-Study-MopoProject/.venv/Scripts/python.exe`)
+
+    - **If you use SpineToolbox for other projects** (or don't want to configure globally):
+    
+        Double-click each Python tool (Red hammer) > for the *Interpreter* field, browse to find the Python of this project and select it, then click in the code-editor window and press CTRL+S to save before closing the tool window. (The path should be something like `C:/users/username/Industrial-Case-Study-MopoProject/.venv/Scripts/python.exe`. Once you find it, you can copy-paste to other tools.)
+
 <!-- 1. Double-click on each Julia tool and set the Project to the project folder 
 
     (This makes sure it sees the correct julia environment and packages) -->
@@ -43,9 +67,9 @@ Once constructed, this repo should be an easy way to reproduce the Industrial Ca
     
     (This will create sqlite files in the default folders SpineToolbox chooses.)
 
-TODO: Set to Consumer
+1. Set your project to "Consumer mode" so that moving blocks does not register as changing the workflow:
 
-TODO: Make sure tools use python env created above
+    *File > Project Settings > Consumer Mode*
 
 You should be good to go!
 
