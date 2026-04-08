@@ -53,36 +53,36 @@ def add_alternative(db_map : DatabaseMapping,name_alternative : str) -> None:
 def define_polygons(config : dict, region_data : dict, on_level : str, off_level : str) -> dict:
     
     countries = [
-        "AT",  # Austria
+        #"AT",  # Austria
         "BE",  # Belgium
-        "BG",  # Bulgaria
-        "HR",  # Croatia
-        "CY",  # Cyprus
-        "CZ",  # Czech Republic
-        "DK",  # Denmark
-        "EE",  # Estonia
-        "FI",  # Finland
-        "FR",  # France
-        "DE",  # Germany
-        "GR",  # Greece
-        "HU",  # Hungary
-        "IE",  # Ireland
-        "IT",  # Italy
-        "LV",  # Latvia
-        "LT",  # Lithuania
-        "LU",  # Luxembourg
-        "MT",  # Malta
+        #"BG",  # Bulgaria
+        #"HR",  # Croatia
+        #"CY",  # Cyprus
+        #"CZ",  # Czech Republic
+        #"DK",  # Denmark
+        #"EE",  # Estonia
+        #"FI",  # Finland
+        #"FR",  # France
+        #"DE",  # Germany
+        #"GR",  # Greece
+        #"HU",  # Hungary
+        #"IE",  # Ireland
+        #"IT",  # Italy
+        #"LV",  # Latvia
+        #"LT",  # Lithuania
+        #"LU",  # Luxembourg
+        #"MT",  # Malta
         "NL",  # Netherlands
-        "PL",  # Poland
-        "PT",  # Portugal
-        "RO",  # Romania
-        "SK",  # Slovakia
-        "SI",  # Slovenia
-        "ES",  # Spain
-        "SE",  # Sweden
-        "CH",  # Switzerland
-        "UK",  # United Kingdom
-        "NO"   # Norway
+        #"PL",  # Poland
+        #"PT",  # Portugal
+        #"RO",  # Romania
+        #"SK",  # Slovakia
+        #"SI",  # Slovenia
+        #"ES",  # Spain
+        #"SE",  # Sweden
+        #"CH",  # Switzerland
+        #"UK",  # United Kingdom
+        #"NO"   # Norway
     ]
     polygons={"onshore_polygons":{},"offshore_polygons":{}}
     for country_id in countries:
