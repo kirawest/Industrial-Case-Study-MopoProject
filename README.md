@@ -119,6 +119,8 @@ Now you can open spinetoolbox and work on things. If you only work in the data a
 
 1. Click on the link, or go to your remote online to create a **PULL REQUEST** to the shared repo.
 
+1. Someone else should review the Pull Request before merging it.
+
 
 # TODO Running the Workflow
 
