@@ -129,3 +129,10 @@ Now you can open spinetoolbox and work on things. If you only work in the data a
 - Avoiding rerunning from raw
 - Scenario filters
 - Config files
+
+# Note to developers
+
+The data-pipelines section of this repository is a "subtree" of the ines/data-pipelines repository (on the EU_case branch).\
+You can make any changes you like in those folders and it won't affect the original data-pipelines repo.\
+And that repo can change completely and it won't impact this usage of it.\
+If you WANT to push or pull changes from that repository, just ask an AI how to do that with a "git subtree."
