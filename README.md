@@ -1,6 +1,6 @@
 # This repo is currently under construction
 
-Once constructed, this repo should be an easy way to reproduce the Industrial Case workflow, both for collaboration and for others to use in the future. It can also serve as an example for others that want to build additional data on top of the European Case.
+Once constructed, this repo should be an easy way to reproduce the Industrial Case workflow, both for collaboration during hte project and for others to use in the future. It can also serve as an example for others that want to build additional data on top of the European Case.
 
 # First Time Set Up Instructions
 
@@ -120,6 +120,8 @@ Now you can open spinetoolbox and work on things. If you only work in the data a
 1. Click on the link, or go to your remote online to create a **PULL REQUEST** to the shared repo.
 
 1. Someone else should review the Pull Request before merging it.
+
+For more info on this workflow and how to fix merge errors, see the detailed version we wrote for Tulipa contributors [here.](https://tulipaenergy.github.io/TulipaEnergyModel.jl/stable/90-contributing/91-developer/#Contributing-Workflow)
 
 
 # TODO Running the Workflow
