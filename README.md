@@ -4,9 +4,9 @@ Once constructed, this repo should be an easy way to reproduce the Industrial Ca
 
 # First Time Set Up Instructions
 
-
 1. Install Python, Julia, and (optional) VSCode.
-1. **Clone** this repository
+1. **Fork** this repository
+1. **Clone** your fork
 1. Go to the file `data/version_track.yml` and follow the link for each data source. Then be sure to download the version that matches the date in the version_track file.
 
     Folder structure in data/:
