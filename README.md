@@ -2,8 +2,6 @@
 
 Once constructed, this repo should be an easy way to reproduce the Industrial Case workflow, both for collaboration and for others to use in the future. It can also serve as an example for others that want to build additional data on top of the European Case.
 
-    !!! note These instructions are not correct. This is a draft, copied from a different repo.
-
 # First Time Set Up Instructions
 
 
@@ -11,20 +9,20 @@ Once constructed, this repo should be an easy way to reproduce the Industrial Ca
 1. **Clone** this repository
 1. Go to the file `data/version_track.yml` and follow the link for each data source. Then be sure to download the version that matches the date in the version_track file.
 
-Folder structure in data/:
-- Biomass
-- Buildings
-- Cargo
-- Commodities
-- Electricity_Transmission
-- Energy_Conversion
-- Gas
-- geodata
-- Hydro
-- Industry
-- Rdemand
-- Transport
-- VRE
+    Folder structure in data/:
+    - Biomass
+    - Buildings
+    - Cargo
+    - Commodities
+    - Electricity_Transmission
+    - Energy_Conversion
+    - Gas
+    - geodata (currently in this repo, but should be moved to Zenodo)
+    - Hydro
+    - Industry
+    - Rdemand
+    - Transport
+    - VRE
 
     !!! note: This does not seem like the ideal way to download the data. All the data should be in one location in the correct file structure, but right now that is under the Pan-European case (along with the .spinetoolbox etc) on Zenodo.
 
@@ -91,7 +89,7 @@ Once you've completed the first-time setup, this is how you can start-up when re
 
 Now you can open spinetoolbox and work on things. If you only work in the data and *running* the pipeline, just save and close. If you make changes to the pipeline that you want to share, follow these steps:
 
-1. Check what has changed: 
+1. Check what you have changed:
 
     `git status`
 
@@ -103,7 +101,7 @@ Now you can open spinetoolbox and work on things. If you only work in the data a
 
      `git add [FILE]`
 
-1. Check everything is correct: 
+1. Check all the right files have been added:
 
     `git status`
 
@@ -113,7 +111,7 @@ Now you can open spinetoolbox and work on things. If you only work in the data a
 
 1. **COMMIT** your changes: 
 
-    `git commit -m "My insightful message"`
+    `git commit -m "My message about what has changed"`
 
 1. **PUSH** your changes to your own remote fork:
 
