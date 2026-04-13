@@ -1,6 +1,6 @@
 # This repo is currently under construction
 
-Once constructed, this repo should be an easy way to reproduce the Industrial Case workflow, both for collaboration during hte project and for others to use in the future. It can also serve as an example for others that want to build additional data on top of the European Case.
+Once constructed, this repo should be an easy way to reproduce the Industrial Case workflow, both for collaboration during the project and for others to use in the future. It can also serve as an example for others that want to build additional data on top of the European Case.
 
 # First Time Set Up Instructions
 
@@ -35,7 +35,11 @@ Once constructed, this repo should be an easy way to reproduce the Industrial Ca
     py -3.13 -m venv .venv
     .\venv\Scripts\Activate.ps1
     ```
-
+    !Note: in CMD terminal:
+    ```
+    \.venv\Scripts>activate.bat 
+    ```
+    
 1. Install python dependencies: 
 
     `python -m pip install -r python-requirements.txt`
