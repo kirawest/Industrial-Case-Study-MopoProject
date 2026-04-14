@@ -73,6 +73,8 @@ Once constructed, this repo should be an easy way to reproduce the Industrial Ca
 
     *File > Project Settings > Consumer Mode*
 
+  Note that when in Consumer Mode you are not able to modify the project.json file (links between tools, file names, etc.). Make sure you are in Author Mode when changing these so you won't lose your edits when you close the project.
+
 You should be good to go!
 
 # Updating the Workflow (collaborating)
