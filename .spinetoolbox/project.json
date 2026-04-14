@@ -1297,11 +1297,6 @@
                 {
                     "type": "path",
                     "relative": true,
-                    "path": "data/geodata/onshore_plus_ic.geojson"
-                },
-                {
-                    "type": "path",
-                    "relative": true,
                     "path": "data-pipelines/europe/EU_historical_inflation_ECB.csv"
                 },
                 {
@@ -1318,6 +1313,11 @@
                     "type": "path",
                     "relative": true,
                     "path": "data/version_track.yml"
+                },
+                {
+                    "type": "path",
+                    "relative": true,
+                    "path": "data/geodata/IC1.geojson"
                 }
             ],
             "file_patterns": [],
@@ -1366,7 +1366,7 @@
                 },
                 {
                     "type": "resource",
-                    "arg": "<project>/data/geodata/onshore_plus_ic.geojson"
+                    "arg": "<project>/data/geodata/IC1.geojson"
                 },
                 {
                     "type": "resource",
