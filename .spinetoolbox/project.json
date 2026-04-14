@@ -1120,12 +1120,12 @@
                 {
                     "type": "path",
                     "relative": true,
-                    "path": "data/Hydro/EU_parameters_data_20260215_version1.xlsx"
+                    "path": "data/version_track.yml"
                 },
                 {
                     "type": "path",
                     "relative": true,
-                    "path": "data/version_track.yml"
+                    "path": "data/Hydro/IC1_parameters_data.xlsx"
                 }
             ],
             "file_patterns": [],
@@ -1157,7 +1157,7 @@
                 },
                 {
                     "type": "resource",
-                    "arg": "<project>/data/Hydro/EU_parameters_data_20260215_version1.xlsx"
+                    "arg": "<project>/data/Hydro/IC1_parameters_data.xlsx"
                 },
                 {
                     "type": "resource",
@@ -1432,7 +1432,7 @@
                 },
                 {
                     "type": "resource",
-                    "arg": "<project>/data/Rdemand/other_electricity_demand.csv"
+                    "arg": "<project>/data/Rdemand/other_electricity_demand_IC1.csv"
                 },
                 {
                     "type": "resource",
@@ -1455,17 +1455,17 @@
                 {
                     "type": "path",
                     "relative": true,
-                    "path": "data/Rdemand/other_electricity_demand.csv"
-                },
-                {
-                    "type": "path",
-                    "relative": true,
                     "path": "data-pipelines/europe/userconfig.yaml"
                 },
                 {
                     "type": "path",
                     "relative": true,
                     "path": "data/version_track.yml"
+                },
+                {
+                    "type": "path",
+                    "relative": true,
+                    "path": "data/Rdemand/other_electricity_demand_IC1.csv"
                 }
             ],
             "file_patterns": [],
@@ -1694,7 +1694,7 @@
                 },
                 {
                     "type": "resource",
-                    "arg": "<project>/data/Transport/fleets_per_scenario.csv"
+                    "arg": "<project>/data/Transport/fleet.csv"
                 },
                 {
                     "type": "resource",
@@ -1859,17 +1859,17 @@
                 {
                     "type": "path",
                     "relative": true,
-                    "path": "data/Transport/fleets_per_scenario.csv"
-                },
-                {
-                    "type": "path",
-                    "relative": true,
                     "path": "data-pipelines/europe/userconfig.yaml"
                 },
                 {
                     "type": "path",
                     "relative": true,
                     "path": "data/version_track.yml"
+                },
+                {
+                    "type": "path",
+                    "relative": true,
+                    "path": "data/Transport/fleet.csv"
                 }
             ],
             "file_patterns": [],
