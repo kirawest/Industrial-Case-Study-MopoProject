@@ -86,7 +86,7 @@ def add_vehicle_timeseries(target_db,data,scenario_fleet,flex_range,cyears):
     LPG_factor = 7.08 # kWh/kg
 
     df_index = pd.DataFrame(data.keys(),columns=["region","vehicle","year","profile"])
-    print(df_index.dtypes)
+ #   print(df_index.dtypes)
     for region in df_index["region"].unique():
         add_entity(target_db,"region",(region,))
         for vehicle in df_index["vehicle"].unique():
