@@ -86,6 +86,7 @@ def add_vehicle_timeseries(target_db,data,scenario_fleet,flex_range,cyears):
     LPG_factor = 7.08 # kWh/kg
 
     df_index = pd.DataFrame(data.keys(),columns=["region","vehicle","year","profile"])
+ #   print(df_index.dtypes)
     for region in df_index["region"].unique():
         add_entity(target_db,"region",(region,))
         for vehicle in df_index["vehicle"].unique():
@@ -119,6 +120,7 @@ def add_vehicle_timeseries(target_db,data,scenario_fleet,flex_range,cyears):
                         map_profile = {"type":"map","index_type":"str","index_name":"t","data":profile_historical_wy(-1.0*data_fixed_charging,cyears)}
                         add_parameter_value(target_db,entity_name,"flow_profile","Base",entity_byname,map_profile)
 
+
                         for alternative_name in ["GA","DE"]:
                             for flex_scenario in flex_range:
                                 map_profile = {"type":"map","index_type":"str","index_name":"period","data":{f"y{year}":round((1.0-float(flex_scenario)/1e2)*scenario_fleet.at[(region,vehicle,int(year),alternative_name),"Total Fleet"]*scenario_fleet.at[(region,vehicle,int(year),alternative_name),"electricity proportion"]/1e3,1) for year in df_index["year"].unique()}}
@@ -138,6 +140,9 @@ def add_vehicle_timeseries(target_db,data,scenario_fleet,flex_range,cyears):
 
                         for flex_scenario in ["0","10","20"]:
                             for alternative_name in ["GA","DE"]:
+                                print("flex_range:", flex_range)
+                                print("year types:", [type(y) for y in df_index["year"].unique()])
+                                print("alternative_name:", alternative_name)
                                 map_profile = {"type":"map","index_type":"str","index_name":"period","data":{f"y{year}":round((float(flex_scenario)/1e2)*data_flex_charging[year]*scenario_fleet.at[(region,vehicle,int(year),alternative_name),"Total Fleet"]*scenario_fleet.at[(region,vehicle,int(year),alternative_name),"electricity proportion"]/1e3,1) for year in df_index["year"].unique()}}
                                 add_parameter_value(target_db,entity_name,"power_capacity",alternative_name+f"_flex{flex_scenario}",entity_byname,map_profile)
                                 map_profile = {"type":"map","index_type":"str","index_name":"period","data":{f"y{year}":round((float(flex_scenario)/1e2)*data_flex_cap[year]*scenario_fleet.at[(region,vehicle,int(year),alternative_name),"Total Fleet"]*scenario_fleet.at[(region,vehicle,int(year),alternative_name),"electricity proportion"]/1e3,1) for year in df_index["year"].unique()}}
@@ -176,7 +181,7 @@ def add_nonroad_timeseries(target_db,data,cyears):
         except:
             pass
 
-        veh_headers = ["domestic-aviation_thermal_PJ","domestic-navigation_thermal_PJ","international-aviation_thermal_PJ","international-maritime-bunkers_thermal_PJ","rail_non_thermal_PJ","rail_thermal_PJ"]
+        veh_headers = ["domestic_aviation_thermal_PJ","domestic_navigation_thermal_PJ","international_aviation_thermal_PJ","international_maritime_bunkers_thermal_PJ","rail_non_thermal_PJ","rail_thermal_PJ"]
         veh_types = ["aviation","maritime","int-aviation","int-maritime","rail","thermal-rail"]
         veh_fuels = ["HC","HC","HC","HC","elec","HC"]
         veh_map = dict(zip(veh_headers,veh_types))
@@ -250,7 +255,20 @@ def main():
         data_type = "hourly" if "profile" in elements[3] else "weekly"
         data[(elements[0],elements[1],elements[2],data_type)] = pd.read_csv(file,index_col=0)
 
-    scenario_fleet = pd.read_csv(sys.argv[4],index_col=[0,1,2,3])
+    #scenario_fleet = pd.read_csv(sys.argv[4], index_col=[0,1,2,3], dtype={2: int}) #original
+
+    
+    scenario_fleet = pd.read_csv(sys.argv[4], index_col=[0,1,2,3])
+    scenario_fleet = scenario_fleet.reset_index()
+    scenario_fleet["Year"] = scenario_fleet["Year"].astype(int)
+    scenario_fleet = scenario_fleet.drop_duplicates()
+    scenario_fleet = scenario_fleet.set_index(["Country code","Vehicle","Year","Scenario"])
+    scenario_fleet = scenario_fleet.sort_index()
+    
+    #print(scenario_fleet.index.is_unique)
+    #dupes = scenario_fleet[scenario_fleet.index.duplicated(keep=False)]
+    #print(dupes)
+    #print(dupes.index.tolist())
 
     with DatabaseMapping(url_db_out) as target_db:
 
