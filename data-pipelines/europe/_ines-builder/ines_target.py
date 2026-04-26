@@ -1188,8 +1188,16 @@ def add_heat_sector(db_map : DatabaseMapping, db_source : DatabaseMapping, confi
                 # checking hard-coding conditions
                 if "technology" in entity_class_elements and definition_condition == True:
                     for index_in_class in [i for i in range(len(entity_class_elements)) if entity_class_elements[i]=="technology"]:
-                        if sum(sum(region_params["technology"]["units_existing"][entity_names[index_in_class]][poly][alternative]["data"].values()) for alternative in region_params["technology"]["units_existing"][entity_names[index_in_class]][poly]) == 0.0 and config["user"]["technology"][entity_names[index_in_class]]["investment_method"] == "not_allowed":
-                            definition_condition *= False
+                        tech_name = entity_names[index_in_class]
+                        existing_dict = region_params.get("technology", {}).get("units_existing", {}).get(tech_name, {})
+                        user_tech = config["user"]["technology"].get(tech_name, {})
+                        investment_method = user_tech.get("investment_method")
+                        if investment_method == "not_allowed":
+                            if existing_dict:
+                                if sum(sum(existing_dict[poly][alternative]["data"].values()) for alternative in existing_dict.get(poly, {})) == 0.0:
+                                    definition_condition *= False
+                            else:
+                                definition_condition *= False
 
                 if definition_condition == True:
                     for entity_class_target in config["sys"][db_name]["entities"][entity_class]:
@@ -1209,7 +1217,11 @@ def add_heat_sector(db_map : DatabaseMapping, db_source : DatabaseMapping, confi
                                 for param_target in param_list:
                                     entity_source_name = "__".join([entity_names[i-1] for k in param_list[param_target][2] for i in k])
                                     entity_target_name = tuple(["__".join([entity_target_names[i-1] for i in k]) for k in param_list[param_target][3]])
-                                    add_parameter_value(db_map,entity_class_target,param_target,"Base",entity_target_name,config["user"][param_list[param_target][0]][entity_source_name][param_list[param_target][1]])
+                                    user_section = config["user"].get(param_list[param_target][0], {})
+                                    if entity_source_name in user_section:
+                                        add_parameter_value(db_map,entity_class_target,param_target,"Base",entity_target_name,user_section[entity_source_name][param_list[param_target][1]])
+                                    else:
+                                        print(f"WARNING: No user config found for '{entity_source_name}', skipping parameter '{param_target}'")
 
                         # Default Parameters
                         if entity_class in config["sys"][db_name]["parameters"]["default"]:
