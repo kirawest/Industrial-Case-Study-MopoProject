@@ -1326,9 +1326,17 @@ def add_cargo_sector(db_map : DatabaseMapping, db_source : DatabaseMapping, conf
                                         value_param = param_list[param_source][1]*value_["parsed_value"] if value_["type"] != "map" else {"type":"map","index_type":"str","index_name":"period","data":{key:param_list[param_source][1]*item for key,item in dict(json.loads(value_["value"])["data"]).items()}}
                                         add_parameter_value(db_map,entity_class_target,param_list[param_source][0],value_["alternative_name"],entity_target_name,value_param)
 
+def entity_exists(db_map, entity_class, name_tuple):
+    try:
+        db_map.get_entity_items(entity_class_name=entity_class, entity_byname=name_tuple)
+        return True
+    except:
+        return False
+
 def coupling_spatial_resolutions(db_map : DatabaseMapping, config : dict):
 
-    mopo_resolutions = ["PECD1","PECD2","NUTS2","NUTS3"]
+#    mopo_resolutions = ["PECD1","PECD2","NUTS2","NUTS3"] #used for EU case study
+    mopo_resolutions = ["PECD1","IC1","NUTS3"]  #used for IC1 resolution industrial case study
     commodity_pipeline = {"elec":"power_transmission","CH4":"gas_pipelines","H2":"gas_pipelines","bio":"cargo_transport","HC":"cargo_transport","MeOH":"cargo_transport"}
     for commodity in config["user"]["network"]:
         if config["user"]["commodity"][commodity]["status"]:
@@ -1357,11 +1365,12 @@ def coupling_spatial_resolutions(db_map : DatabaseMapping, config : dict):
                                 link_name = f"{polygon_name}_{commodity}_{target_polygon}"
                                 node_name_1 = f"{commodity}_{polygon_name}"
                                 node_name_2 = f"{commodity}_{target_polygon}"
-                                add_entity(db_map,"link",(link_name,))
-                                add_entity(db_map,"node__link__node",(node_name_1,link_name,node_name_2))
-                                add_entity(db_map,"node__link__node",(node_name_2,link_name,node_name_1))
-                                add_parameter_value(db_map,"node__link__node","efficiency","Base",(node_name_1,link_name,node_name_2),1.0)
-                                add_parameter_value(db_map,"node__link__node","efficiency","Base",(node_name_2,link_name,node_name_1),1.0)
+                                if not entity_exists(db_map, "link", (link_name,)):                                    
+                                    add_entity(db_map,"link",(link_name,))
+                                    add_entity(db_map,"node__link__node",(node_name_1,link_name,node_name_2))
+                                    add_entity(db_map,"node__link__node",(node_name_2,link_name,node_name_1))
+                                    add_parameter_value(db_map,"node__link__node","efficiency","Base",(node_name_1,link_name,node_name_2),1.0)
+                                    add_parameter_value(db_map,"node__link__node","efficiency","Base",(node_name_2,link_name,node_name_1),1.0)
                                 break
 
 def add_policy_constraints(db_map : DatabaseMapping, config : dict):
