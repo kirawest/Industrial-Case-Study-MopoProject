@@ -59,11 +59,11 @@ def define_polygons(config : dict, region_data : dict, on_level : str, off_level
         #"HR",  # Croatia
         #"CY",  # Cyprus
         #"CZ",  # Czech Republic
-        #"DK",  # Denmark
+        "DK",  # Denmark
         #"EE",  # Estonia
         #"FI",  # Finland
-        #"FR",  # France
-        #"DE",  # Germany
+        "FR",  # France
+        "DE",  # Germany
         #"GR",  # Greece
         #"HU",  # Hungary
         #"IE",  # Ireland
@@ -81,8 +81,8 @@ def define_polygons(config : dict, region_data : dict, on_level : str, off_level
         #"ES",  # Spain
         #"SE",  # Sweden
         #"CH",  # Switzerland
-        #"UK",  # United Kingdom
-        #"NO"   # Norway
+        "UK",  # United Kingdom
+        "NO"   # Norway
     ]
     polygons={"onshore_polygons":{},"offshore_polygons":{}}
     for country_id in countries:

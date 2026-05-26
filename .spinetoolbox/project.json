@@ -1222,12 +1222,12 @@
                 {
                     "type": "path",
                     "relative": true,
-                    "path": "data/Electricity_Transmission/Electricity_Transmission.csv"
+                    "path": "data/version_track.yml"
                 },
                 {
                     "type": "path",
                     "relative": true,
-                    "path": "data/version_track.yml"
+                    "path": "data/Electricity_Transmission/Electricity_Transmission_Industry.csv"
                 }
             ],
             "file_patterns": [],
@@ -1248,7 +1248,7 @@
                 },
                 {
                     "type": "resource",
-                    "arg": "<project>/data/Electricity_Transmission/Electricity_Transmission.csv"
+                    "arg": "<project>/data/Electricity_Transmission/Electricity_Transmission_Industry.csv"
                 },
                 {
                     "type": "resource",
@@ -1609,7 +1609,7 @@
         "industry_importer": {
             "type": "Tool",
             "description": "",
-            "x": -267.4797033368458,
+            "x": -269.8667035649013,
             "y": 385.93824150894017,
             "specification": "industry_importer",
             "execute_in_work": false,
